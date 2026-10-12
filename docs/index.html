@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>hyprliquid — Liquid glass for Hyprland</title>
+<meta name="description" content="Windows that move like liquid glass. A Hyprland plugin.">
+<style>
+:root{--bg:#07070c;--fg:#e9e9f2;--mute:#9a9ab0;--card:#11111a;--line:#24243a;--a:#5fd7ff;--b:#7affc8}
+@media (prefers-color-scheme: light){:root:not([data-theme=dark]){--bg:#f6f6fb;--fg:#15151f;--mute:#5a5a70;--card:#ffffff;--line:#e2e2ee}}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--a)}.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{padding:72px 0 28px}.tag{display:inline-block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--a);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.05;margin:18px 0 10px;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:20px;color:var(--mute);max-width:760px}
+video{width:100%;border-radius:16px;border:1px solid var(--line);display:block;background:#000;margin:28px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:24px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}.card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;color:var(--mute);font-size:15px}
+h2{margin:48px 0 8px}pre{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto;font-size:14px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{display:inline-block;padding:10px 18px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:var(--fg)}.btn.p{background:linear-gradient(90deg,var(--a),var(--b));color:#0b0b12;border:0;font-weight:600}
+footer{color:var(--mute);font-size:14px;padding:48px 0 64px;border-top:1px solid var(--line);margin-top:56px}
+.others a{margin-right:14px}
+</style></head>
+<body><div class="wrap">
+<header><span class="tag">Hyprland plugin · Liquid glass</span>
+<h1>hyprliquid</h1><p class="lead">Windows that move like liquid glass. A Hyprland plugin that turns every window change into liquid. Each moving window is a soft body (shape matching) with a small wave simulation on its surface, rendered as Apple-style liquid glass: refraction, dispersion, a clear rim and a meniscus that pulls the background in.</p>
+<div class="btns"><a class="btn p" href="https://github.com/Guizzan/hyprliquid">Source on GitHub</a><a class="btn" href="#install">Install</a></div></header>
+<video src="demo.mp4" autoplay loop muted playsinline controls></video>
+<p style="color:var(--mute);font-size:14px;margin-top:-16px">Demo: opening and closing a window, switching workspaces, fullscreen, and two drags.</p>
+<h2>What it does</h2><div class="grid"><div class="card"><h3>Open / close</h3><p>A drop of glass swells into the new window; a closing window collapses into a drop and splashes into glass beads.</p></div><div class="card"><h3>Move / resize / fullscreen / layout</h3><p>Every window that changes place flows into its new shape, lagging, stretching and settling.</p></div><div class="card"><h3>Workspace switch</h3><p>The old desktop&#x27;s windows flow out to one side while the new ones pour in from the other.</p></div><div class="card"><h3>Drag</h3><p>SUPER + drag pours the window into a liquid drop hanging from the cursor: it sloshes, ripples and sheds droplets on fast moves, then pours into its new place.</p></div><div class="card"><h3>Optics</h3><p>Content seen through the waving surface with dispersion, a thick clear rim bending what lies behind it, a meniscus, specular highlights and a thin-film shimmer.</p></div></div>
+<h2 id="install">Install</h2>
+<p>Built and tested against <b>Hyprland 0.56</b> with the Lua config. Plugins are tied to the exact Hyprland version: rebuild after every Hyprland update.</p>
+<pre>git clone https://github.com/Guizzan/hyprliquid
+cd hyprliquid
+make            # builds hyprliquid-dev.so
+make install    # copies it to hyprliquid.so (new inode, safe while Hyprland runs)</pre>
+<p>Load it from your Lua config and turn off Hyprland's own window and workspace animations, which the plugin replaces:</p>
+<pre>pcall(hl.plugin.load, os.getenv("HOME") .. "/path/to/hyprliquid/hyprliquid.so")
+for _, leaf in ipairs({ "workspaces", "windowsIn", "windowsOut", "windowsMove", "fadeIn", "fadeOut" }) do
+    hl.animation({ leaf = leaf, enabled = false })
+end</pre>
+<p>Then log out and back in. Don't hot-swap the plugin in a running session (unloading it can crash Hyprland), and only run one of these effect plugins at a time.</p>
+<h2>Try it nested</h2><pre>Hyprland -c test/hyprland.lua</pre>
+<footer><div class="others">More effects: <a href="https://guizzan.github.io/hyprmorph/">hyprmorph — Pixel morph</a> <a href="https://guizzan.github.io/hyprhole/">hyprhole — Black hole</a></div><p>Made by <a href="https://github.com/Guizzan">Guizzan</a>.</p></footer>
+</div></body></html>
