@@ -4,7 +4,7 @@ Windows that move like liquid glass. A Hyprland plugin that turns every window c
 
 **Demo and details: https://guizzan.github.io/hyprliquid/**
 
-https://github.com/Guizzan/hyprliquid/raw/master/docs/demo.mp4
+[![hyprliquid demo](docs/demo.gif)](https://guizzan.github.io/hyprliquid/)
 
 ## What it does
 
