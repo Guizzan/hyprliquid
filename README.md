@@ -1,6 +1,6 @@
-# hyprliquid — liquid glass for Hyprland
+# hyprliquid — liquid for Hyprland
 
-Windows that move like liquid glass. A Hyprland plugin that turns every window change into liquid. Each moving window is a soft body (shape matching) with a small wave simulation on its surface, rendered as Apple-style liquid glass: refraction, dispersion, a clear rim and a meniscus that pulls the background in.
+Windows that move like liquid. A Hyprland plugin that turns every window change into liquid. Each moving window is a soft body (shape matching) with a small wave simulation on its surface, rendered as a refractive liquid: refraction, dispersion, a clear rim and a meniscus that pulls the background in.
 
 **Demo and details: https://guizzan.github.io/hyprliquid/**
 
@@ -8,7 +8,7 @@ Windows that move like liquid glass. A Hyprland plugin that turns every window c
 
 ## What it does
 
-- **Open / close** — A drop of glass swells into the new window; a closing window collapses into a drop and splashes into glass beads.
+- **Open / close** — A drop swells into the new window; a closing window collapses into a drop and splashes into droplets.
 - **Move / resize / fullscreen / layout** — Every window that changes place flows into its new shape, lagging, stretching and settling.
 - **Workspace switch** — The old desktop's windows flow out to one side while the new ones pour in from the other.
 - **Drag** — SUPER + drag pours the window into a liquid drop hanging from the cursor: it sloshes, ripples and sheds droplets on fast moves, then pours into its new place.

@@ -1,4 +1,4 @@
-// hyprliquid — windows as liquid glass.
+// hyprliquid — windows as liquid.
 //
 // Every change of a window is poured as liquid: opening (a drop swells into
 // the window), closing (the window collapses into a drop and splashes),
@@ -12,7 +12,7 @@
 //     target (or the cursor), so it lags, stretches and settles;
 //   * a small wave simulation on its surface, with sloshing driven by the
 //     body's acceleration;
-//   * rendered as liquid glass: the window's content seen through the surface
+//   * rendered as a refractive liquid: the window's content seen through the surface
 //     (refracted, with dispersion), a thick clear rim that bends what lies
 //     behind it (red and blue bend differently), a meniscus pulling the
 //     background in around it, specular light and a thin-film shimmer.
@@ -201,7 +201,7 @@ uniform float halo;         // px
 uniform float px;           // monitor scale (1 logical px)
 uniform vec2  slosh;        // surface tilt
 uniform float time;
-uniform float glass;        // 0 = plain window .. 1 = full liquid glass
+uniform float glass;        // 0 = plain window .. 1 = full liquid
 uniform float opacity;      // fades the whole body (and its meniscus) out
 out vec4 frag;
 
@@ -1301,7 +1301,7 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
         for (int i = 0; i < NX; ++i)
             g_grid.push_back({-1.f + 2.f * i / (NX - 1), -1.f + 2.f * j / (NY - 1)});
     g_listeners.push_back(Event::bus()->m_events.render.stage.listen([](eRenderStage s) { onRenderStage(s); }));
-    return {"hyprliquid", "Windows as liquid glass", "guizzan", "0.2"};
+    return {"hyprliquid", "Windows as liquid", "guizzan", "0.2"};
 }
 
 APICALL EXPORT void PLUGIN_EXIT() {
